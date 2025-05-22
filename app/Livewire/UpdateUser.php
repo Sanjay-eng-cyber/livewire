@@ -14,16 +14,18 @@ class UpdateUser extends Component
     public $password;
     public $check = true;
 
- public function updated($field){
-     $this->validateOnly($field,[
-     'name' => 'required|string|max:255|min:3',
+    public function updated($field)
+    {
+        $this->validateOnly($field, [
+            'name' => 'required|string|max:255|min:3',
             'email' => 'required|email|unique:users,email|min:8|max:30',
             'password' => 'required|min:6',
-    ]);
-}
+        ]);
+    }
 
-    public function updateUser(){
-           $this->validate([
+    public function updateUser()
+    {
+        $this->validate([
             'name' => 'required|string|max:255|min:3',
             'email' => 'required|email|unique:users,email,' . $this->u_id,
             'password' => 'required|min:6',
@@ -32,10 +34,10 @@ class UpdateUser extends Component
         $user->name = $this->name;
         $user->email = $this->email;
         $user->password = Hash::make($this->password);
-        if($user->save()){
+        if ($user->save()) {
             $this->check = false;
             session()->flash('success', 'User Updated successfully!');
-            $this->reset(['name','email','password']);
+            $this->reset(['name', 'email', 'password']);
         }
     }
     public function render()

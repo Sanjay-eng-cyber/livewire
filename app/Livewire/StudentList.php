@@ -19,20 +19,24 @@ class StudentList extends Component
         return view('livewire.student-list');
     }
 
-    public function mount(){
+    public function mount()
+    {
         $this->loadUsers();
     }
 
-    public function loadUsers(){
+    public function loadUsers()
+    {
         $this->users = User::all();
     }
 
     #[On('user-added')]
-    public function updateList(){
+    public function updateList()
+    {
         $this->loadUsers();
     }
 
-    public function edit($id){
+    public function edit($id)
+    {
         $this->u_id = $id;
         $user = User::findOrFail($id);
         $this->name = $user->name;
@@ -40,11 +44,12 @@ class StudentList extends Component
         $this->check = false;
     }
 
-    public function delete($id){
+    public function delete($id)
+    {
         $user = User::findOrFail($id);
-        if($user->delete()){
-           $this->loadUsers();
-           session()->flash('success','User Deleted successfully');
+        if ($user->delete()) {
+            $this->loadUsers();
+            session()->flash('success', 'User Deleted successfully');
         }
     }
 }
