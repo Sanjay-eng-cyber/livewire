@@ -10,7 +10,7 @@
 
 <body>
     <div class="container mt-3">
-        <button id="pay-button">Pay with Razorpay</button>
+        <button id="pay-button" class="btn btn-primary">Pay with Razorpay</button>
     </div>
 
 
@@ -24,7 +24,7 @@
     <script>
         var options = {
             "key": "{{ config('services.razorpay.key') }}",
-            "amount": "10000", // 100 = 1 INR
+            "amount": "100", // 100 = 1 INR
             "currency": "INR",
             "name": "Test Payment",
             "description": "Test Transaction",
