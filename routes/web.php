@@ -24,6 +24,14 @@ Route::get('products', function () {
     return view('products');
 });
 
+Route::get('css-test', function () {
+    return view('css-test');
+});
+
+Route::get('layout', function () {
+    return view('layout');
+});
+
 Route::get('stripe', [StripePaymentController::class, 'index']);
 Route::post('stripe', [StripePaymentController::class, 'store'])->name('stripe.store');
 
