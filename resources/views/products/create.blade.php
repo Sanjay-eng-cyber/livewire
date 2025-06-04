@@ -31,8 +31,23 @@
             </div>
             <button type="submit" class="btn btn-primary mt-2">Submit</button>
         </form>
+        <div class="col-12 mt-5">
+            <table class="table table-sm">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Name</th>
+                        <th>Price</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+        </div>
     </div>
     <script>
+        // Ajax For Create
         document.getElementById('productForm').addEventListener('submit', function(e) {
             e.preventDefault();
             const data = {
@@ -60,6 +75,31 @@
                 })
                 .catch(err => console.error('Error:', err));
         });
+
+        // Ajax For Fetch data
+        fetch('/products-index', {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+            })
+            .then(res => res.json())
+            .then(response => {
+                if (response.success) {
+                    if (response.data.length > 0) {
+                        response.data.forEach(function(pro) {
+                            document.querySelector('tbody').appendChild(Object.assign(document.createElement(
+                                'tr'), {
+                                innerHTML: `<td>${pro.id}</td><td>${pro.name}</td><td>${pro.price}</td><td><button class="btn btn-primary" data-id="${pro.id}">Delete</button></td>`
+                            }));
+                        });
+                    } else {
+                        document.querySelector('tbody').appendChild(Object.assign(document.createElement('tr'), {
+                            innerHTML: `<td>No Products Found</td>`
+                        }));
+                    }
+                }
+            }).catch(err => console.log('Error:', err));
     </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
