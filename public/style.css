@@ -382,11 +382,11 @@ span {
     font-size: 50px;
 }
 
-div {
+/* div {
     width: 200px;
     height: 200px;
     position: absolute;
-}
+} */
 
 #box1 {
     top: 100px;
@@ -679,7 +679,17 @@ div {
     z-index: -1;
 }
 
-#dec{
+#dec {
     margin-left: 50px;
     margin-top: 50px;
+}
+
+#input {
+    text-align: center;
+    width: 50px;
+}
+
+.toast-success {
+    background-color: rgb(10, 246, 108) !important;
+    color: rgb(6, 18, 3) !important;
 }

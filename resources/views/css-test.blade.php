@@ -468,9 +468,24 @@
 
 
     <button id="dec">-</button>
-    <input type="text" id="input" value="0" />
+    <input type="text" id="input" value="1" />
     <button id="inc">+</button>
-
+    <select id="select">
+    </select>
+    <div class="container mt-3">
+        <table class="table table-sm">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Name</th>
+                    <th>Price</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+    </div>
     <script>
         // const btn = document.getElementById('btn');
         // const div = document.getElementById('display');
@@ -488,20 +503,62 @@
             const btnInc = document.getElementById('inc');
             const btnDec = document.getElementById('dec');
             const input = document.getElementById('input');
-            // console.log(btnInc)
-            let count = 0;
+            // console.log(input.value)
+            let count = input.value;
             btnInc.addEventListener("click", function() {
-                count++;
-                input.value = count;
+                if (count < 100) {
+                    count++;
+                    input.value = count;
+                }
             });
             btnDec.addEventListener("click", function() {
-                count--;
-                input.value = count;
-                if (count < 0) {
-                    input.value = 0;
+                if (count > 0) {
+                    count--;
+                    input.value = count;
                 }
             });
         });
+
+        const countries = ["India", "USA", "Canada", "Australia", "Germany"];
+
+        const select = document.getElementById("select");
+
+        for (const country of countries) {
+            const option = document.createElement("option");
+            option.textContent = country;
+            select.appendChild(option);
+        }
+
+        const person = {
+            name: "Alice",
+            age: 30
+        };
+        for (const key in person) {
+            console.log(key, "=", person[key]);
+        }
+
+        const fruits = ["apple", "banana", "cherry"];
+
+        fruits.forEach(function(fruit, index) {
+            console.log(index + ": " + fruit);
+        });
+
+        // Ajax for get method
+        fetch('products-index', {
+                method: 'get',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+            })
+            .then(response => response.json())
+            .then(respone => {
+                respone.data.forEach(function(data) {
+                    document.querySelector('tbody').appendChild(Object.assign(document.createElement('tr'), {
+                        innerHTML: `<td>${data.id}</td><td>${data.name}</td><td>${data.price}</td><td><button class="btn btn-primary">Edit</button></td>`
+                    }));
+                });
+            })
+            .catch(error => console.error('Error:', error));
     </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
