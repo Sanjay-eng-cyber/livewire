@@ -32,6 +32,7 @@
             <button type="submit" class="btn btn-primary mt-2">Submit</button>
         </form>
         <div class="col-12 mt-5">
+            <h1></h1>
             <table class="table table-sm">
                 <thead>
                     <tr>
@@ -86,6 +87,7 @@
             .then(res => res.json())
             .then(response => {
                 if (response.success) {
+                    document.querySelector('h1').innerHTML = `Total Products = ${response.data.length}`;
                     if (response.data.length > 0) {
                         response.data.forEach(function(pro) {
                             document.querySelector('tbody').appendChild(Object.assign(document.createElement(
