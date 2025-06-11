@@ -34,6 +34,10 @@ Route::get('layout', function () {
     return view('layout');
 });
 
+Route::get('opps', function () {
+    return view('opps');
+});
+
 Route::get('products-index', [ProductsController::class, 'index']);
 
 Route::get('product/create', [ProductsController::class, 'createProduct'])->name('product.create');
