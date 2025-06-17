@@ -693,3 +693,34 @@ span {
     background-color: rgb(10, 246, 108) !important;
     color: rgb(6, 18, 3) !important;
 }
+
+.flex {
+    display: flex;
+    /* justify-content: space-between; */
+    /* align-items: center; */
+    flex-wrap: wrap;
+}
+
+.flex>a {
+    width: 300px;
+    height: 200px;
+    border: 2px solid red;
+    padding: 20px;
+    margin: 0 0 20px 20px;
+    text-decoration-line: none;
+    -moz-text-decoration-line: none;
+    color: black;
+}
+
+ .grid {
+    display: grid;
+    grid-template-columns: repeat(3, 50fr);
+    gap: 40px;
+  }
+
+  .grid > div{
+    width: 200px;
+    height: 100px;
+    border: 2px solid red;
+    margin: 0 0 20px 20px;
+  }

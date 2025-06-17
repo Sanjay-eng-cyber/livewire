@@ -486,6 +486,25 @@
             </tbody>
         </table>
     </div>
+
+    <div class="flex">
+        <a href="{{ route('product.create') }}">Item 1</a>
+        <a>Item 2</a>
+        <a>Item 3</a>
+        <a>Item 4</a>
+        <a>Item 5</a>
+        <a>Item 6</a>
+        <a>Item 7</a>
+    </div>
+
+    <div class="grid">
+        <div>1</div>
+        <div>2</div>
+        <div>3</div>
+        <div>4</div>
+        <div>5</div>
+        <div>6</div>
+    </div>
     <script>
         // const btn = document.getElementById('btn');
         // const div = document.getElementById('display');
